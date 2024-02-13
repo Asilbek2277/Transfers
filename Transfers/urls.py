@@ -25,5 +25,6 @@ urlpatterns = [
     path('', index),
     path('clubs/', clubs),
     path('players/', players),
+    path('players/', players),
 
 ]
