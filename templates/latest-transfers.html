@@ -5,7 +5,8 @@
           <table class="content-nav">
             <thead>
               <tr>
-                <td>#player</td>
+                <td>#</td>
+                <td>player</td>
                 <td>from</td>
                 <td>to</td>
                 <td>
@@ -26,7 +27,8 @@
         <table class="players">
           {%for t in transfers%}
           <tr>
-            <td>{{forloop.counter}}.{{t.player.ism}}</td>
+            <td>{{forloop.counter}}</td>
+            <td>{{t.player.ism}}</td>
             <td>{{t.club_eski}}</td>
             <td>{{t.club_yangi}}</td>
             <td>{{t.narx}}</td>

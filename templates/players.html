@@ -18,7 +18,7 @@
         <table class="playerss">
             {% for player in players %}
           <tr>
-            <td>{{player.id}}</td>
+            <td>{{forloop.counter}}</td>
             <td>{{player.ism}}</td>
             <td>{{player.club.nom}}</td>
             <td>{{player.narx}}</td>

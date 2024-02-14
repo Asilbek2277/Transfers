@@ -10,14 +10,14 @@ def index(request):
 
 def clubs(request):
     context={
-        'clubs': Club.objects.all()
+        'clubs': Club.objects.order_by('-kapital').all()
     }
     return render(request, 'clubs.html', context)
 
 
 def players(request):
     context={
-        'players': Player.objects.all()
+        'players': Player.objects.order_by('-narx').all()
     }
     return render(request, 'players.html', context)
 
@@ -33,7 +33,7 @@ def u_20_players(request):
     yil = int(hozirgi_sana[:4]) - 20
     yangi_sana=hozirgi_sana.replace(hozirgi_sana[:4], str(yil))
     context={
-        'players': Player.objects.filter(t_yil__gt=yangi_sana)
+        'players': Player.objects.order_by('-narx').filter(t_yil__gt=yangi_sana)
     }
     return render(request, 'U-20 players.html' , context)
 
@@ -49,7 +49,7 @@ def seasons(request):
 def clubs_players(request, club_name):
     context={
         'clubs': Club.objects.filter(nom=club_name),
-        'players': Player.objects.filter(club__nom=club_name)
+        'players': Player.objects.order_by('-narx').filter(club__nom=club_name)
     }
 
     return render(request, 'clubs-players.html', context)
@@ -57,7 +57,7 @@ def clubs_players(request, club_name):
 
 def transfers_record(request):
     context={
-        'players': Transfer.objects.filter(narx__gte=50)
+        'players': Transfer.objects.order_by('-narx').filter(narx__gte=50)[:100]
     }
     return render(request, 'transfer-records.html', context)
 
@@ -68,7 +68,9 @@ def latest_transfers(request):
     hozirgi_sana = str(date.today())
     yil = hozirgi_sana[:4]
     context={
-        'transfers': Transfer.objects.filter(mavsum__contains=yil)
+        'transfers': Transfer.objects.order_by('-narx').filter(mavsum__contains=yil)
     }
     return render(request, 'latest-transfers.html', context)
+
+
 
