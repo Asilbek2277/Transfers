@@ -20,6 +20,10 @@ class PlayerAdmin(admin.ModelAdmin):
 
 class TransferAdmin(admin.ModelAdmin):
     list_display = ['player', 'narx', 'sana']
+    search_fields = ['narx']
+    search_help_text = 'Narx boyicha qidiruv'
+    list_filter = ['mavsum']
+    autocomplete_fields = ['player', 'club_eski', 'club_yangi']
 
 
 admin.site.register(Davlat)

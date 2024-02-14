@@ -64,12 +64,12 @@
           </a>
         </div>
         <div class="links">
-          <div><a href="./clubs.html">CLUBS</a></div>
-          <div><a href="./latest-transfers.html">LATEST TRANSFERS</a></div>
-          <div><a href="/players/">PLAYERS</a></div>
-          <div><a href="./U-20 players.html">U-20 PLAYERS</a></div>
-          <div><a href="./tryouts.html">TRYOUTS</a></div>
-          <div><a href="./stats.html">STATS</a></div>
+          <div><a href="{% url 'clubs' %}">CLUBS</a></div>
+          <div><a href="{% url 'latest_transfers'%}">LATEST TRANSFERS</a></div>
+          <div><a href="{% url 'players' %}">PLAYERS</a></div>
+          <div><a href="{% url 'u-20' %}">U-20 PLAYERS</a></div>
+          <div><a href="#">TRYOUTS</a></div>
+          <div><a href="{% url 'stats' %}">STATS</a></div>
           <div class="navActive"><a href="#">ABOUT US</a></div>
         </div>
       </div>
@@ -77,26 +77,18 @@
         <h2 id="title">Clubs by country</h2>
         <div class="country">
           <div>
-            <h3><a href="./countries/england.html">England</a> <br /></h3>
-            <h3><a href="./countries/italy.html">italy</a> <br /></h3>
-            <h3><a href="./countries/france.html">France</a> <br /></h3>
-            <h3>
-              <a href="./countries/netherlands.html">Netherlands</a> <br />
-            </h3>
-            <h3><a href="./countries/ukraine.html">Ukraine</a> <br /></h3>
-            <h3><a href="./countries/argentina.html">Argentina</a> <br /></h3>
+            {% for c in countries1%}
+            <h3><a href="/{{c.nom}}/clubs/">{{c.nom}}</a> <br /></h3>
+            {% endfor %}
           </div>
           <div>
-            <h3><a href="./countries/spain.html">Spain</a> <br /></h3>
-            <h3><a href="./countries/germany.html">Germany</a> <br /></h3>
-            <h3><a href="./countries/portugal.html">Portugal</a> <br /></h3>
-            <h3><a href="./countries/brazil.html">Brazil</a> <br /></h3>
-            <h3><a href="./countries/russia.html">Russia</a> <br /></h3>
-            <h3><a href="./countries/other.html">Other</a> <br /></h3>
+            {%for c in countries2%}
+            <h3><a href="/{{c.nom}}/clubs/">{{c.nom}}</a> <br /></h3>
+            {% endfor%}
           </div>
         </div>
          <hr>
-        <h2><a href="/transfer-archive/">Transfers archive</a></h2>
+        <h2><a href="{% url 'seasons' %}">Transfers archive</a></h2>
       </div>
         {% block content %}
 
