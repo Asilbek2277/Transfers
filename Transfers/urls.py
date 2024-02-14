@@ -34,6 +34,7 @@ urlpatterns = [
     path('transfers_record/', transfers_record),
     path('stats/', stats, name='stats'),
     path('latest_transfers/', latest_transfers, name='latest_transfers'),
+    path('<str:mavsum>/mavsumlar/', mavsumlar, name='mavsumlar'),
 
 
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

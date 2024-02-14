@@ -40,8 +40,10 @@ def u_20_players(request):
 
 def seasons(request):
     mavsumlar = Transfer.objects.all().values_list('mavsum', flat=True)
+    m=set(mavsumlar)
+    mav=list(m)
     context = {
-        'mavsumlar': sorted(mavsumlar)
+        'mavsumlar': sorted(mav)
     }
     return render(request, 'transfer-archive.html', context)
 
@@ -72,5 +74,9 @@ def latest_transfers(request):
     }
     return render(request, 'latest-transfers.html', context)
 
-
+def mavsumlar(request, mavsum):
+    context={
+        'seasons': Transfer.objects.filter(mavsum=mavsum)
+    }
+    return render(request, '2017-18season.html', context)
 
