@@ -80,3 +80,9 @@ def mavsumlar(request, mavsum):
     }
     return render(request, '2017-18season.html', context)
 
+
+def top_50_clubs(request):
+    context={
+        'clubs': Club.objects.order_by('-kapital')[:50]
+    }
+    return render(request, 'top_50_clubs_by_income.html', context)
