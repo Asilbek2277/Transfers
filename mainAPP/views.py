@@ -86,3 +86,9 @@ def top_50_clubs(request):
         'clubs': Club.objects.order_by('-kapital')[:50]
     }
     return render(request, 'top_50_clubs_by_income.html', context)
+
+def about(request):
+    return render(request, 'about.html')
+
+def tryouts(request):
+    return render(request, 'tryouts.html')
